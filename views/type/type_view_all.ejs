@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Type - View All</title>
+</head>
+    <body>
+        <h1>Type</h1>
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>Classification</th>
+                <th>Description</th>
+            </tr>
+            <% for(var i=0; type.length > i; i++ ) { %>
+                <tr>
+                    <td><%= type[i].type_id %></td>
+                    <td><%= type[i].classification %></td>
+                    <td><%= type[i].description %></td>
+                </tr>
+            <% } %>
+        </table>
+    </body>
+</html>

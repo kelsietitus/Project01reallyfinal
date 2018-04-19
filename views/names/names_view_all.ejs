@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Names - View All</title>
+</head>
+    <body>
+        <h1>Names</h1>
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Scientific Name</th>
+            </tr>
+            <% for(var i=0; names.length > i; i++ ) { %>
+                <tr>
+                    <td><%= names[i].name_id %></td>
+                    <td><%= names[i].common_name %></td>
+                    <td><%= names[i].scientific_name %></td>
+                </tr>
+            <% } %>
+        </table>
+    </body>
+</html>

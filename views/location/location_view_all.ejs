@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Location - View All</title>
+</head>
+    <body>
+        <h1>Location</h1>
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>City</th>
+                <th>County</th>
+            </tr>
+            <% for(var i=0; location.length > i; i++ ) { %>
+                <tr>
+                    <td><%= location[i].location_id %></td>
+                    <td><%= location[i].city %></td>
+                    <td><%= location[i].county %></td>
+                </tr>
+            <% } %>
+        </table>
+    </body>
+</html>

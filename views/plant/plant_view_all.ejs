@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Plant - View All</title>
+</head>
+    <body>
+        <h1>Plant</h1>
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Scientific Name</th>
+                <th>City</th>
+                <th>County</th>
+                <th>Classification</th>
+            </tr>
+            <% for(var i=0; plant.length > i; i++ ) { %>
+                <tr>
+                    <td><%= plant[i].plant_id %></td>
+                    <td><%= plant[i].plant_name %></td>
+                    <td><%= plant[i].scientific_name %></td>
+                    <td><%= plant[i].city %></td>
+                    <td><%= plant[i].county %></td>
+                    <td><%= plant[i].classification %></td>
+                </tr>
+            <% } %>
+        </table>
+    </body>
+</html>
