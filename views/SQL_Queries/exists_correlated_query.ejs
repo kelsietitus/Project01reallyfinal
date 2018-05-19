@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: mediumaquamarine;
+        }
+    </style>
+</head>
+    <body>
+        <h1>Exists and Correlated Query</h1>
+        <table border="1">
+            <tr>
+                <th>Common Name</th>
+            </tr>
+            <% for(var i=0; result.length > i; i++ ) { %>
+                <tr>
+                    <td><%= result[i].common_name %></td>
+                </tr>
+            <% } %>
+        </table>
+
+        <p> SELECT common_name
+            FROM names WHERE EXISTS (SELECT plant_kingdom FROM plant WHERE name_id = names.name_id AND plant_id < 50); </p>
+        <p> This query will return a list of names of plants from the database that have a plant ID that is less than 50 </p>
+    </body>
+</html>

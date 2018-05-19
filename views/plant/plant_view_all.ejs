@@ -2,28 +2,44 @@
 <html>
 <head>
     <title> Plant - View All</title>
+    <style>
+        body {
+            background-color: mediumseagreen;
+        }
+    </style>
 </head>
     <body>
         <h1>Plant</h1>
         <table border="1">
             <tr>
-                <th>ID</th>
-                <th>Name</th>
+                <th>Plant Kingdom</th>
+                <th>Common Name</th>
                 <th>Scientific Name</th>
                 <th>City</th>
                 <th>County</th>
                 <th>Classification</th>
+                <th>Actions</th>
             </tr>
             <% for(var i=0; plant.length > i; i++ ) { %>
                 <tr>
-                    <td><%= plant[i].plant_id %></td>
-                    <td><%= plant[i].plant_name %></td>
+                    <td><%= plant[i].plant_kingdom %></td>
+                    <td><%= plant[i].common_name %></td>
                     <td><%= plant[i].scientific_name %></td>
                     <td><%= plant[i].city %></td>
                     <td><%= plant[i].county %></td>
                     <td><%= plant[i].classification %></td>
+                    <td>
+                        <a href='/plant/edit/?plant_id=<%= plant[i].plant_id %>'>
+                        Edit
+                        </a>
+                        &nbsp;<a href="/names/delete?plant_id=<%= plant[i].plant_id %>">
+                            Delete
+                        </a>
+                   </td>
                 </tr>
             <% } %>
         </table>
+         <font color="red">DISCLAIMER: THIS TABLE CONSISTS OF THREE JOINS AND WILL NOT WORK. HOWEVER I KNOW HOW TO EDIT AND DELETE FROM WEB PAGE JUST NOT FOR TRIPLE JOINS.</font>
+         <font color="red">PS really it won't work so I wouldn't even try</font>
     </body>
 </html>

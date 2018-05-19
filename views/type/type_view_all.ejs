@@ -2,20 +2,32 @@
 <html>
 <head>
     <title> Type - View All</title>
+    <style>
+        body {
+            background-color: lightgreen;
+        }
+    </style>
 </head>
     <body>
-        <h1>Type</h1>
+        <h1><a href="/type/add">Type</a></h1>
         <table border="1">
             <tr>
-                <th>ID</th>
                 <th>Classification</th>
                 <th>Description</th>
+                <th>Action</th>
             </tr>
             <% for(var i=0; type.length > i; i++ ) { %>
                 <tr>
-                    <td><%= type[i].type_id %></td>
                     <td><%= type[i].classification %></td>
                     <td><%= type[i].description %></td>
+                    <td>
+                        <a href='/type/edit/?type_id=<%= type[i].type_id %>'>
+                        Edit
+                        </a>
+                        &nbsp;<a href="/type/delete?type_id=<%= type[i].type_id %>">
+                            Delete
+                        </a>
+                   </td>
                 </tr>
             <% } %>
         </table>

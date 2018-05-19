@@ -5,20 +5,20 @@ var db = require('./db_connection.js');
 var connection = mysql.createConnection(db.config);
 
 exports.getAll = function(callback) {
-    var query = 'SELECT * FROM plant;';
+    var query = 'CALL plants_getall();';
 
     connection.query(query, function (err, result) {
         callback(err, result);
     });
 };
 
-exports.insert = function(params, callback) {
+exports.delete = function(params, callback) {
+    var query = 'DELETE FROM plant WHERE plant_id = ?';
 
-    var query = 'INSERT INTO plant (plant_name, scientific_name, city, county, classification ) VALUES (?,?,?,?,?)';
-
-    var queryData = [params.plant_name, params.scientific_name, params.city, params.county, params.classification];
+    var queryData = [params.plant_id];
 
     connection.query(query, queryData, function(err, result) {
         callback(err, result);
     });
 };
+

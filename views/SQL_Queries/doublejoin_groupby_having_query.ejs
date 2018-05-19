@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: mediumaquamarine;
+        }
+    </style>
+</head>
+    <body>
+           <h1>Double Join, Group By, Having Query</h1>
+           <table border="1">
+               <tr>
+                   <th>Common Name</th>
+                   <th>Plant Location Count</th>
+               </tr>
+               <% for(var i=0; result.length > i; i++ ) { %>
+                   <tr>
+                       <td><%= result[i].common_name %></td>
+                       <td><%= result[i].Plant_Location_Count %></td>
+                   </tr>
+               <% } %>
+           </table>
+           <p> SELECT n.common_name, COUNT(p.plant_id) AS Plant_Location_Count
+               FROM names n
+               LEFT JOIN plant p ON n.name_id = p.name_id
+               LEFT JOIN plant_location pl ON p.plant_id = pl.plant_id
+               GROUP BY n.name_id
+               HAVING COUNT(p.plant_id) >= MAX(p.plant_id); </p>
+           <p> This query will return the common name of a plant from the plant database that has the most amount of plant IDs between the tables that were joined </p>
+
+
+    </body>
+</html>

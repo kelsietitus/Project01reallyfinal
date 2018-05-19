@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: mediumaquamarine;
+        }
+    </style>
+</head>
+    <body>
+        <h1>In Query</h1>
+        <table border="1">
+            <tr>
+                <th>Classification</th>
+                <th>Description</th>
+            </tr>
+            <% for(var i=0; result.length > i; i++ ) { %>
+                <tr>
+                    <td><%= result[i].classification %></td>
+                    <td><%= result[i].description %></td>
+                </tr>
+            <% } %>
+        </table>
+
+        <p> SELECT * FROM type
+            WHERE classification IN ('TREE'); </p>
+        <p> This query will return the classification of plant that is a tree from the data in the database </p>
+    </body>
+</html>

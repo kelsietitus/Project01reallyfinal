@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Type - Edit</title>
+    </head>
+    <body>
+        <h1> Edit Type </h1>
+        <form action="/type/update" method="get" >
+
+         <input type="hidden"
+                 id="type_id"
+                 name="type_id"
+                 value="<%= type.type_id %>"
+            />
+            <br />
+
+            Classification: <input
+                    id = "classification"
+                    name = "classification"
+                    type= "text"
+                    value="<%= type.classification %>"
+            />
+            <br />
+
+            Description: <input
+                    id = "description"
+                    name = "description"
+                    type= "text"
+                    value="<%= type.description %>"
+            />
+            <br />
+            <input type="submit" />
+        </form>
+    </body>
+</html>

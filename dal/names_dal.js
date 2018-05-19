@@ -22,3 +22,34 @@ exports.insert = function(params, callback) {
         callback(err, result);
     });
 };
+
+exports.getinfo = function(name_id, callback) {
+    var query = 'CALL names_getinfo(?)';
+    var queryData = [name_id];
+
+    connection.query(query, queryData, function(err, result) {
+        callback(err,result);
+    });
+};
+
+exports.update = function(params, callback) {
+    var query = 'UPDATE names SET common_name = ?, scientific_name = ? WHERE name_id = ?';
+
+    var queryData = [params.common_name, params.scientific_name, params.name_id];
+
+    connection.query(query, queryData, function(err, result) {
+        callback(err, result);
+
+
+    });
+};
+
+exports.delete = function(params, callback) {
+    var query = 'DELETE FROM names WHERE names_id = ?';
+
+    var queryData = [params.names_id];
+
+    connection.query(query, queryData, function(err, result) {
+        callback(err, result);
+    });
+};

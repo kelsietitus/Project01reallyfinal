@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> SQL Queries - View All</title>
+    <style>
+        body {
+            background-color: mediumaquamarine;
+        }
+    </style>
+</head>
+    <body>
+        <h1>In Query</h1>
+        <table border="1">
+            <tr>
+                <th>Classification</th>
+                <th>Description</th>
+            </tr>
+            <% for(var i=0; result.length > i; i++ ) { %>
+                <tr>
+                    <td><%= result[i].classification %></td>
+                    <td><%= result[i].description %></td>
+                </tr>
+            <% } %>
+        </table>
+
+        <p> SELECT * FROM type
+            WHERE classification IN ('TREE'); </p>
+        <p> This query will return the classification of plant that is a tree from the data in the database </p>
+
+        <h1>Exists and Correlated Query</h1>
+        <table border="1">
+            <tr>
+                <th>Common Name</th>
+            </tr>
+            <% for(var i=0; result.length > i; i++ ) { %>
+                <tr>
+                    <td><%= result[i].common_name %></td>
+                </tr>
+            <% } %>
+        </table>
+
+        <p> SELECT common_name
+            FROM names WHERE EXISTS (SELECT plant_kingdom FROM plant WHERE name_id = names.name_id AND plant_id < 50); </p>
+        <p> This query will return a list of names of plants from the database that have a plant ID that is less than 50 </p>
+
+         <h1>Correlated Query comparing values</h1>
+         <table border="1">
+             <tr>
+                 <th>Scientific Name</th>
+             </tr>
+             <% for(var i=0; result.length > i; i++ ) { %>
+                 <tr>
+                     <td><%= result[i].scientific_name %></td>
+                 </tr>
+             <% } %>
+         </table>
+
+         <p>     SELECT scientific_name
+             	FROM names
+             	WHERE name_id > (SELECT name_id FROM plant WHERE plant_id = 3); </p>
+         <p> This query will return a list of scientific names of plants from the database that have a name ID that is less than 3 </p>
+
+           <h1>Group By Query</h1>
+           <table border="1">
+               <tr>
+                   <th>Amount</th>
+                   <th>Classification</th>
+               </tr>
+               <% for(var i=0; result.length > i; i++ ) { %>
+                   <tr>
+                       <td><%= result[i].amount %></td>
+                       <td><%= result[i].classification %></td>
+                   </tr>
+               <% } %>
+           </table>
+           <p> SELECT COUNT(type_id) AS Amount, classification
+               FROM type
+               GROUP BY classification; </p>
+           <p> This query will count the amount of types of plant and return the frequency and classification </p>
+
+           <h1>Order By Query</h1>
+           <table border="1">
+               <tr>
+                   <th>Common Name</th>
+               </tr>
+               <% for(var i=0; result.length > i; i++ ) { %>
+                   <tr>
+                       <td><%= result[i].common_name %></td>
+                   </tr>
+               <% } %>
+           </table>
+           <p>     SELECT name_id, common_name
+               	FROM names
+               	ORDER BY common_name; </p>
+           <p> This query will return a list of common plant names from the database in alphabetical order </p>
+
+           <h1>Union Query</h1>
+           <table border="1">
+               <tr>
+                   <th>Name ID</th>
+               </tr>
+               <% for(var i=0; result.length > i; i++ ) { %>
+                   <tr>
+                       <td><%= result[i].name_id %></td>
+                   </tr>
+               <% } %>
+           </table>
+           <p> SELECT name_id FROM names
+               UNION
+               SELECT name_id FROM plant; </p>
+           <p> This query will create a union between the names and plant table and return a list of name ID's </p>
+
+           <h1>Distinct Query</h1>
+           <table border="1">
+               <tr>
+                   <th>Classification Count</th>
+               </tr>
+               <% for(var i=0; result.length > i; i++ ) { %>
+                   <tr>
+                       <td><%= result[i].num_types %></td>
+                   </tr>
+               <% } %>
+           </table>
+           <p> SELECT COUNT(DISTINCT classification) AS Num_Types FROM type; </p>
+           <p> This query will return the amount of different types of plants from the database </p>
+
+           <h1>Double Join, Group By, Having Query</h1>
+           <table border="1">
+               <tr>
+                   <th>Common Name</th>
+                   <th>Plant Location Count</th>
+               </tr>
+               <% for(var i=0; result.length > i; i++ ) { %>
+                   <tr>
+                       <td><%= result[i].common_name %></td>
+                       <td><%= result[i].plant_location_count %></td>
+                   </tr>
+               <% } %>
+           </table>
+           <p> SELECT n.common_name, COUNT(p.plant_id) AS Plant_Location_Count
+               FROM names n
+               LEFT JOIN plant p ON n.name_id = p.name_id
+               LEFT JOIN plant_location pl ON p.plant_id = pl.plant_id
+               GROUP BY n.name_id
+               HAVING COUNT(p.plant_id) >= MAX(p.plant_id); </p>
+           <p> This query will return the common name of a plant from the plant database that has the most amount of plant IDs between the tables that were joined </p>
+
+
+    </body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: mediumaquamarine;
+        }
+    </style>
+</head>
+    <body>
+           <h1>Order By Query</h1>
+           <table border="1">
+               <tr>
+                   <th>Common Name</th>
+               </tr>
+               <% for(var i=0; result.length > i; i++ ) { %>
+                   <tr>
+                       <td><%= result[i].common_name %></td>
+                   </tr>
+               <% } %>
+           </table>
+           <p>     SELECT name_id, common_name
+               	FROM names
+               	ORDER BY common_name; </p>
+           <p> This query will return a list of common plant names from the database in alphabetical order </p>
+    </body>
+</html>

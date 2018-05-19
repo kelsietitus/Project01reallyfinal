@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Names - Edit</title>
+    </head>
+    <body>
+        <h1> Edit Names </h1>
+        <form action="/names/update" method="get" >
+
+         <input type="hidden"
+                 id="name_id"
+                 name="name_id"
+                 value="<%= names.name_id %>"
+            />
+            <br />
+
+            Common Name: <input
+                    id = "common_name"
+                    name = "common_name"
+                    type= "text"
+                    value="<%= names.common_name %>"
+            />
+            <br />
+
+            Scientific Name: <input
+                    id = "scientific_name"
+                    name = "scientific_name"
+                    type= "text"
+                    value="<%= names.scientific_name %>"
+            />
+            <br />
+            <input type="submit" />
+        </form>
+    </body>
+</html>

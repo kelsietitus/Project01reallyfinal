@@ -2,20 +2,32 @@
 <html>
 <head>
     <title> Location - View All</title>
+    <style>
+        body {
+            background-color: mediumspringgreen;
+        }
+    </style>
 </head>
     <body>
-        <h1>Location</h1>
+        <h1><a href="/location/add">Location</a></h1>
         <table border="1">
             <tr>
-                <th>ID</th>
                 <th>City</th>
                 <th>County</th>
+                <th>Actions</th>
             </tr>
             <% for(var i=0; location.length > i; i++ ) { %>
                 <tr>
-                    <td><%= location[i].location_id %></td>
                     <td><%= location[i].city %></td>
                     <td><%= location[i].county %></td>
+                    <td>
+                        <a href='/location/edit/?location_id=<%= location[i].location_id %>'>
+                            Edit
+                        </a>
+                        &nbsp;<a href="/location/delete?location_id=<%= location[i].location_id %>">
+                            Delete
+                        </a>
+                   </td>
                 </tr>
             <% } %>
         </table>

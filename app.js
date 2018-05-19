@@ -10,6 +10,8 @@ var names = require('./routes/names');
 var location = require('./routes/location');
 var type = require('./routes/type');
 var plant = require('./routes/plant');
+var SQL_scripts = require('./routes/SQL_scripts');
+
 
 
 var app = express();
@@ -30,6 +32,8 @@ app.use('/names', names);
 app.use('/location', location);
 app.use('/type', type);
 app.use('/plant', plant);
+app.use('/SQL_scripts', SQL_scripts);
+
 
 
 // catch 404 and forward to error handler

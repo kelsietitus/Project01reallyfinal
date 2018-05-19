@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+         <h1>Correlated Query comparing values</h1>
+         <table border="1">
+             <tr>
+                 <th>Scientific Name</th>
+             </tr>
+             <% for(var i=0; result.length > i; i++ ) { %>
+                 <tr>
+                     <td><%= result[i].scientific_name %></td>
+                 </tr>
+             <% } %>
+         </table>
+
+         <p>     SELECT scientific_name
+             	FROM names
+             	WHERE name_id > (SELECT name_id FROM plant WHERE plant_id = 3); </p>
+         <p> This query will return a list of scientific names of plants from the database that have a name ID that is less than 3 </p>
